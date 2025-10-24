@@ -78,7 +78,7 @@ export default function MedFasterNavbar() {
           </span>
           <span
             className="
-              absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 
+              absolute right-3 sm:right-2 top-1/2 -translate-y-1/2 
               bg-white rounded-full w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center
               border border-[#F4781B]
               group-hover:bg-gray-100 transition
