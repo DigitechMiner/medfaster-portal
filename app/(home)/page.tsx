@@ -3,6 +3,7 @@ import HeroSection from "./components/hero-section"
 import CompanyLogos from "./components/company-logos"
 import GetHiredSection from "./components/get-hired-section"
 import AIHelpsSection from "./components/ai-helps-section"
+import { Footer } from "@/components/global/footer"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <CompanyLogos />
       <GetHiredSection />
       <AIHelpsSection />
+      <Footer />
     </div>
   );
 }

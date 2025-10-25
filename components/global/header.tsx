@@ -77,7 +77,7 @@ export default function Header() {
                 className={
                   active === link.label
                     ? 'bg-[#F4781B] text-white rounded-full font-medium w-full my-1'
-                    : 'bg-transparent text-gray-700 rounded-full font-medium w-full my-1 hover:bg-orange-100'
+                    : 'bg-transparent text-gray-700 rounded-full font-medium w-full my-1 hover:bg-[#F4781B]-100'
                 }
                 variant="ghost"
                 asChild
