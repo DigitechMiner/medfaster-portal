@@ -93,50 +93,58 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Second Grid Section - Right 50% - 2x2 Grid Layout */}
-        <div className="grid grid-cols-2 gap-4 h-[600px]">
-          {/* Top-Left: Address Image - spans 2 rows */}
-          <div className="relative row-span-3  bg-[#f5f5f5] rounded-lg">
-            <Image
-              src="/img/address.png"
-              alt="MedFasterrr app interface"
-              fill
-              className="object-contain rounded-lg"
-            />
+        {/* Second Grid Section - Right 50% - Left and Right Sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6">
+          {/* Left Side Section */}
+          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+            {/* Address Image */}
+            <div className="md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
+              <Image
+                src="/img/address.png"
+                alt="MedFasterrr app interface"
+                width={280}
+                height={450}
+                className="object-contain w-full rounded-lg max-w-[380px] aspect-[280/450]"
+              />
+            </div>
+
+            {/* Total Flexibility & Control Box */}
+            <div className="md:flex-[1] bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
+              <h3 className="text-lg font-bold mb-2">
+                Total Flexibility & Control
+              </h3>
+              <p className="text-base font-normal leading-relaxed">
+                Take charge of your career. Filter for full-time, part-time, or
+                single on-demand shifts that fit your schedule. Get instant alerts
+                for jobs you actually want.
+              </p>
+            </div>
           </div>
 
-          {/* Top-Right: Direct & Verified Opportunities Box */}
-          <div className="bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
-            <h3 className="text-lg font-bold mb-2">
-              Direct & Verified Opportunities
-            </h3>
-            <p className="text-base font-normal leading-relaxed">
-              Connect directly with top-tier hospitals and clinics. Our
-              AI-powered system verifies every listing, so you can apply with
-              confidence. No recruiters, no hassle.
-            </p>
-          </div>
+          {/* Right Side Section */}
+          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+            {/* Doctor Image - First on mobile, Second on desktop */}
+            <div className=" order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
+              <Image
+                src="/img/doctor.png"
+                alt="Professional doctor"
+                width={280}
+                height={450}
+                className="object-cover object-top w-full rounded-lg max-w-[380px] aspect-[280/450]"
+              />
+            </div>
 
-          {/* Bottom-Right: Doctor Image */}
-          <div className="relative row-span-3 bg-[#f5f5f5] rounded-lg">
-            <Image
-              src="/img/doctor.png"
-              alt="Professional doctor"
-              fill
-              className="object-cover object-top w-full rounded-lg"
-            />
-          </div>
-
-          {/* Bottom-Left: Total Flexibility & Control Box */}
-          <div className="bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
-            <h3 className="text-lg font-bold mb-2">
-              Total Flexibility & Control
-            </h3>
-            <p className="text-base font-normal leading-relaxed">
-              Take charge of your career. Filter for full-time, part-time, or
-              single on-demand shifts that fit your schedule. Get instant alerts
-              for jobs you actually want.
-            </p>
+            {/* Direct & Verified Opportunities Box - Second on mobile, First on desktop */}
+            <div className="order-2 md:order-1 md:flex-[1] bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
+              <h3 className="text-lg font-bold mb-2">
+                Direct & Verified Opportunities
+              </h3>
+              <p className="text-base font-normal leading-relaxed">
+                Connect directly with top-tier hospitals and clinics. Our
+                AI-powered system verifies every listing, so you can apply with
+                confidence. No recruiters, no hassle.
+              </p>
+            </div>
           </div>
         </div>
       </div>
