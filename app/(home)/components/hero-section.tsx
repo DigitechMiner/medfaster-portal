@@ -7,7 +7,7 @@ import { Search, MapPin, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
-import { Paragraph } from "@/components/ui/paragraph";
+import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 
 export default function HeroSection() {
   return (
@@ -57,13 +57,13 @@ export default function HeroSection() {
 
           {/* Call to Action */}
           <div>
-            <Paragraph size="lg" className="text-[#252B37] mb-6">
+            <ResponsiveParagraph size="base" className="text-[#252B37] mb-6">
               The AI-powered platform connecting you directly with verified
               Health care service providers, such as hospitals, nursing home
               facilities, medical clinics, dental Clinics, physiotherapy clines
               and many more Canada. Discover full-time, part-time, and on-demand
               roles all on your terms.
-            </Paragraph>
+            </ResponsiveParagraph>
             <div className="flex items-center gap-4">
               <CustomButton rightIcon={ArrowRight}>
                 Browse Nearby Jobs
