@@ -48,7 +48,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
           >
             <SelectTrigger
               id="job-title"
-              className="w-full border-orange-500 focus:ring-orange-500 h-10 sm:h-11"
+              className="w-full border-[#F4781B] focus:ring-[#F4781B] h-10 sm:h-11"
             >
               <SelectValue />
             </SelectTrigger>
@@ -98,7 +98,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
               <RadioGroupItem
                 value="Part Time"
                 id="part-time"
-                className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
               />
               <Label htmlFor="part-time" className="font-normal cursor-pointer text-sm">
                 Part Time
@@ -108,7 +108,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
               <RadioGroupItem
                 value="Full Time"
                 id="full-time"
-                className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
               />
               <Label htmlFor="full-time" className="font-normal cursor-pointer text-sm">
                 Full Time
@@ -118,7 +118,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
               <RadioGroupItem
                 value="Freelancer"
                 id="freelancer"
-                className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
               />
               <Label htmlFor="freelancer" className="font-normal cursor-pointer text-sm">
                 Freelancer

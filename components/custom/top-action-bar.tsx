@@ -34,7 +34,7 @@ export function TopActionBar({
           type="button"
           variant="ghost"
           onClick={onPrimary}
-          className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm"
+          className="w-full sm:w-auto bg-[#F4781B] hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm"
         >
           {primaryLabel}
         </Button>

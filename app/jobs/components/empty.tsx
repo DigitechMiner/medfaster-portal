@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { Paragraph } from "@/components/custom/paragraph";
+import { Heading } from "@/components/custom/heading";
 
 export function EmptyJobState() {
   const router = useRouter();
@@ -14,7 +16,7 @@ export function EmptyJobState() {
   return (
     <div className="flex flex-col items-center justify-center py-20">
       {/* Empty State SVG Illustration */}
-      <div className="relative w-40 h-40 mb-6">
+      <div className="relative w-40 h-40">
         <Image
           src="/svg/empty-job.svg"
           alt="Empty Job Illustration"
@@ -24,8 +26,8 @@ export function EmptyJobState() {
         />
       </div>
 
-      <h2 className="text-2xl font-semibold text-gray-900 mb-2">Empty Job</h2>
-      <p className="text-gray-500 mb-6">Lorem ipsum dolor sit amet consectetur.</p>
+      <Heading size="xs" className=" text-gray-900 mb-2">Empty Job</Heading>
+      <Paragraph size="sm" className="text-[#A4A7AE] mb-3" >Lorem ipsum dolor sit amet consectetur.</Paragraph>
       <Button
         onClick={handleCreateJob} 
         size="lg"

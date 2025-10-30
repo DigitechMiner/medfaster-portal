@@ -33,7 +33,7 @@ export function JobDescription({
           variant="ghost"
           size="sm"
           onClick={handleGenerateWithAI}
-          className="text-orange-500 hover:text-orange-600 hover:bg-orange-50 h-7 sm:h-8 text-xs sm:text-sm px-2 sm:px-3 -mt-1 sm:mt-0"
+          className="text-[#F4781B] hover:text-orange-600 hover:bg-orange-50 h-7 sm:h-8 text-xs sm:text-sm px-2 sm:px-3 -mt-1 sm:mt-0"
         >
           <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
           Generate with AI

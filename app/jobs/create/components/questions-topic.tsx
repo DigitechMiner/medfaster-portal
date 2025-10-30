@@ -3,6 +3,7 @@
 import { Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Heading } from "@/components/custom/heading";
 
 interface Question {
   id: string;
@@ -31,15 +32,15 @@ export function QuestionsTopic({
   return (
     <div className="space-y-3 sm:space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm sm:text-base font-semibold text-gray-900">
+        <Heading size="xs" className="text-sm sm:text-base font-semibold text-gray-900">
           {topic.title}
-        </h3>
+        </Heading>
         <Button
           type="button"
           variant="ghost"
           size="sm"
           onClick={onAddQuestion}
-          className="text-orange-500 hover:text-orange-600 hover:bg-orange-50 h-7 sm:h-8 text-xs sm:text-sm px-2 sm:px-3"
+          className="text-[#F4781B] hover:text-orange-600 hover:bg-orange-50 h-7 sm:h-8 text-xs sm:text-sm px-2 sm:px-3"
         >
           <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
           Add Question
@@ -66,7 +67,7 @@ export function QuestionsTopic({
               value={question.text}
               onChange={(e) => onUpdateQuestion(question.id, e.target.value)}
               placeholder="Enter question text..."
-              className="w-full min-h-[60px] sm:min-h-[70px] resize-none text-xs sm:text-sm border-gray-200 focus:border-orange-500 focus:ring-orange-500"
+              className="w-full min-h-[60px] sm:min-h-[70px] resize-none text-xs sm:text-sm border-gray-200 focus:border-[#F4781B] focus:ring-[#F4781B]"
               rows={2}
             />
           </div>

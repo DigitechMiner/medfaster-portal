@@ -4,10 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { QuestionsTopic } from "../components/questions-topic";
-import { TopActionBar } from "@/components/custom/top-action-bar";
-import SuccessModal from "../components/job-success-modal";
-
+import { QuestionsTopic } from "../../create/components/questions-topic";
+import { Heading } from "@/components/custom/heading";
+import { CustomButton } from "@/components/custom/custom-button";
 interface Question {
   id: string;
   text: string;
@@ -19,12 +18,7 @@ interface Topic {
   questions: Question[];
 }
 
-interface Props {
-  onBack?: () => void;
-  onCreate?: (topics: Topic[]) => void;
-}
-
-export function GenerateAIForm({ onBack, onCreate }: Props) {
+export function GenerateAIForm() {
   const router = useRouter();
   const [topics, setTopics] = useState<Topic[]>([
     {
@@ -65,8 +59,6 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
       ],
     },
   ]);
-
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const addQuestion = (topicId: string) => {
     setTopics((prevTopics) =>
@@ -121,36 +113,45 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
 
   const handleSave = () => {
     console.log("Save & continue clicked", topics);
-    setShowSuccess(true);
   };
 
   const handleCreate = () => {
-    if (onCreate) onCreate(topics);
     console.log("Create clicked", topics);
-    setShowSuccess(true);
-  };
-
-  const handleSuccessDone = () => {
-    setShowSuccess(false);
-    router.push("/jobs");
   };
 
   return (
-    <>
     <div className="space-y-3 sm:space-y-4">
-      <TopActionBar
-        title="Create Job post"
-        onPreview={() => onBack && onBack()}
-        onPrimary={handleSave}
-        primaryLabel="Save & continue"
-      />
+      {/* Top Action Buttons - Responsive */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-0">
+        <Heading size="sm" className=" text-gray-900 order-2 sm:order-1">
+          Create Job Post
+        </Heading>
+        <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 order-1 sm:order-2">
+          <CustomButton
+            type="button"
+            onClick={handlePreview}
+            className="w-full sm:w-auto bg-white border-gray-300 border-2 hover:bg-gray-50 text-gray-700 px-4 sm:px-6 h-10 text-sm"
+          >
+            Preview
+          </CustomButton>
+          <CustomButton
+            type="button"
+            onClick={handleSave}
+            className="w-full sm:w-auto bg-[#F4781B] hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm"
+          >
+            Save & continue
+          </CustomButton>
+        </div>
+      </div>
 
+      {/* Form Card - Responsive */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="p-4 sm:p-6 lg:p-8">
-          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-6 sm:mb-8">
-            generate with AI
-          </h2>
+          <Heading size="sm" className="sm:text-lg text-gray-900 mb-6 sm:mb-8">
+            generate with Ai
+          </Heading>
 
+          {/* Questions Topics Grid - Responsive */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {topics.map((topic) => (
               <QuestionsTopic
@@ -168,36 +169,26 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center sm:justify-end items-stretch sm:items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 rounded-b-lg">
+        {/* Bottom Actions - Responsive */}
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-end items-stretch sm:items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 border-t border-gray-200 bg-gray-50 rounded-b-lg">
           <Button
             type="button"
             variant="ghost"
-            onClick={onBack}
+            onClick={() => router.back()}
             className="w-full sm:w-auto bg-white border-[#D9D9E0] border-2 hover:bg-gray-50 text-gray-600 px-4 sm:px-6 h-10 text-sm order-2 sm:order-1"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back
           </Button>
-          <Button
+          <CustomButton
             type="button"
-            variant="ghost"
             onClick={handleCreate}
             className="w-full sm:w-auto bg-[#F4781B] hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm order-1 sm:order-2"
           >
             Create
-          </Button>
+          </CustomButton>
         </div>
       </div>
     </div>
-    <SuccessModal
-      visible={showSuccess}
-      onClose={handleSuccessDone}
-      title="Job created successfully"
-      message="Your job post has been created."
-      buttonText="Done"
-    />
-    </>
   );
 }
-
-

@@ -61,7 +61,7 @@ export function CreateJobForm({ onNext, onBack }: Props) {
       >
         <div className="p-4 sm:p-6 lg:p-8">
           <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-6 sm:mb-8">
-            Create Job post
+            generate with AI
           </h2>
 
           <JobBasicInfo formData={formData} updateFormData={updateFormData} />
@@ -95,7 +95,7 @@ export function CreateJobForm({ onNext, onBack }: Props) {
           <Button
             type="submit"
             variant="ghost"
-            className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm order-1 sm:order-2"
+            className="w-full sm:w-auto bg-[#F4781B] hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm order-1 sm:order-2"
           >
             Next
             <ArrowRight className="w-4 h-4 ml-2" />

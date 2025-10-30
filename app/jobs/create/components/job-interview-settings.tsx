@@ -33,7 +33,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="High"
               id="high"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="high" className="font-normal cursor-pointer text-gray-700 text-sm">
               High
@@ -43,7 +43,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="Low"
               id="low"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="low" className="font-normal cursor-pointer text-gray-700 text-sm">
               Low
@@ -53,7 +53,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="Medium"
               id="medium"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="medium" className="font-normal cursor-pointer text-gray-700 text-sm">
               Medium
@@ -77,7 +77,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="Yes"
               id="in-person-yes"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="in-person-yes" className="font-normal cursor-pointer text-gray-700 text-sm">
               Yes
@@ -87,7 +87,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="No"
               id="in-person-no"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="in-person-no" className="font-normal cursor-pointer text-gray-700 text-sm">
               No
@@ -111,7 +111,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="Yes"
               id="physical-yes"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="physical-yes" className="font-normal cursor-pointer text-gray-700 text-sm">
               Yes
@@ -121,7 +121,7 @@ export function JobInterviewSettings({
             <RadioGroupItem
               value="No"
               id="physical-no"
-              className="border-orange-500 text-white data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+              className="border-[#F4781B] text-white data-[state=checked]:bg-[#F4781B] data-[state=checked]:border-[#F4781B]"
             />
             <Label htmlFor="physical-no" className="font-normal cursor-pointer text-gray-700 text-sm">
               No

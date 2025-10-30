@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/custom/heading";
+import { Paragraph } from "@/components/custom/paragraph";
 
 interface SuccessModalProps {
   visible: boolean;
@@ -40,22 +42,22 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
           </div>
 
           {/* Success Message */}
-          <h2 className="text-lg sm:text-xl font-semibold text-center mb-2 px-2">
+          <Heading size="xs" className="text-center mb-2 px-2">
           {title}
-          </h2>
+          </Heading>
 
           {/* Optional Message */}
           {message && (
-            <p className="text-sm sm:text-base text-center text-gray-600 mb-4 sm:mb-6 px-2">
+            <Paragraph size="lg" className="text-center text-gray-600 mb-4 sm:mb-6 px-2">
              {message}
-            </p>
+            </Paragraph>
           )}
 
           {/* Action Button */}
           <div className="w-full mt-2 sm:mt-4">
             <Button
               onClick={onClose}
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-5 sm:py-6 rounded-lg text-sm sm:text-base"
+              className="w-full bg-[#F4781B] hover:bg-orange-600 text-white font-medium py-5 sm:py-6 rounded-lg text-sm sm:text-base"
            >
               {buttonText}
             </Button>

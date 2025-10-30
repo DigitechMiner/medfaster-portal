@@ -11,13 +11,13 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
             <Link
               href="/terms"
-              className="text-orange-500 hover:text-orange-600 transition-colors"
+              className="text-[#F4781B] hover:text-orange-600 transition-colors"
             >
               Terms & Conditions
             </Link>
             <Link
               href="/privacy"
-              className="text-orange-500 hover:text-orange-600 transition-colors"
+              className="text-[#F4781B] hover:text-orange-600 transition-colors"
             >
               Privacy Policy
             </Link>

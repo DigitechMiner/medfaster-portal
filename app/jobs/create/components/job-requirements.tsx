@@ -135,7 +135,7 @@ export function JobRequirements({
               )
             }
             placeholder="Neurol"
-            className="border-orange-500 focus:ring-orange-500 h-10 sm:h-11"
+            className="border-[#F4781B] focus:ring-[#F4781B] h-10 sm:h-11"
           />
           <div className="flex flex-wrap gap-2 pt-1">
             {formData.qualification.map((tag) => (
