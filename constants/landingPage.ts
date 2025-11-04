@@ -2,7 +2,7 @@ export type NavLink = { label: string; href: string };
 export const landingNavLinks: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/registration' },
-  { label: 'Find Jobs', href: '/registration' },
+  { label: 'Find Jobs', href: '/jobs' },
   { label: 'Blog', href: '/registration' },
   { label: 'Contact Us', href: '/registration' },
 ];

@@ -10,29 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { JOB_TITLES, DEPARTMENTS } from "../../constants/form";
 
 interface JobBasicInfoProps {
   formData: any;
   updateFormData: (updates: any) => void;
 }
-
-const jobTitles = [
-  "Nurse",
-  "Orthopaedics",
-  "Dermatology",
-  "Neurology",
-  "Cardiology",
-  "Pediatrics",
-];
-
-const departments = [
-  "Cardiology",
-  "Neurology",
-  "Orthopaedics",
-  "Dermatology",
-  "Pediatrics",
-  "Emergency",
-];
 
 export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
   return (
@@ -53,7 +36,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {jobTitles.map((title) => (
+              {JOB_TITLES.map((title) => (
                 <SelectItem key={title} value={title}>
                   {title}
                 </SelectItem>
@@ -74,7 +57,7 @@ export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {departments.map((dept) => (
+              {DEPARTMENTS.map((dept) => (
                 <SelectItem key={dept} value={dept}>
                   {dept}
                 </SelectItem>

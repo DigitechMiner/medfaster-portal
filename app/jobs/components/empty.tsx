@@ -14,7 +14,7 @@ export function EmptyJobState() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-20">
+    <div className="flex-1 flex flex-col items-center justify-center py-20">
       {/* Empty State SVG Illustration */}
       <div className="relative w-40 h-40">
         <Image

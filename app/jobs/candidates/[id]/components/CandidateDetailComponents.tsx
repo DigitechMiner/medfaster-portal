@@ -73,3 +73,4 @@ export const ScoreCircle: React.FC<{ score: number; borderColor: string; textCol
     </div>
   </div>
 );
+

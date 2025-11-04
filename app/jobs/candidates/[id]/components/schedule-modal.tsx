@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { DAYS_OF_WEEK } from '../../../constants/form';
 
 interface ScheduleModalProps {
   isOpen: boolean;
@@ -34,8 +35,6 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, o
   for (let i = 1; i <= daysInMonth; i++) {
     calendarDays.push(i);
   }
-
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const handlePrevMonth = () => {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1));
@@ -85,7 +84,7 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, o
 
         {/* Days of week */}
         <div className="grid grid-cols-7 gap-2 mb-4">
-          {daysOfWeek.map((day) => (
+            {DAYS_OF_WEEK.map((day) => (
             <div key={day} className="text-center text-xs font-semibold text-gray-600 py-2">
               {day}
             </div>
@@ -136,3 +135,4 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose, o
     </div>
   );
 };
+

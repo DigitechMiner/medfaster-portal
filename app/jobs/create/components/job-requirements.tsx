@@ -13,9 +13,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { EXPERIENCES, PAY_RANGE_MIN, PAY_RANGE_MAX, PAY_RANGE_STEP } from "../../constants/form";
 
 interface FormData {
-  payRange: number[];
+  payRange: [number, number];
   experience: string;
   qualification: string[];
   specialization: string[];
@@ -25,16 +26,6 @@ interface JobRequirementsProps {
   formData: FormData;
   updateFormData: (updates: Partial<FormData>) => void;
 }
-
-const experiences = [
-  "0-1 Yrs",
-  "1-2 Yrs",
-  "2-3 Yrs",
-  "3-5 Yrs",
-  "5-7 Yrs",
-  "7-10 Yrs",
-  "10+ Yrs",
-];
 
 export function JobRequirements({
   formData,
@@ -84,11 +75,11 @@ export function JobRequirements({
               <span>$ {formData.payRange[1]}</span>
             </div>
             <Slider
-              min={1000}
-              max={10000}
-              step={100}
+              min={PAY_RANGE_MIN}
+              max={PAY_RANGE_MAX}
+              step={PAY_RANGE_STEP}
               value={formData.payRange}
-              onValueChange={(value) => updateFormData({ payRange: value })}
+              onValueChange={(value) => updateFormData({ payRange: value as [number, number] })}
               className="w-full"
             />
           </div>
@@ -106,7 +97,7 @@ export function JobRequirements({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {experiences.map((exp) => (
+              {EXPERIENCES.map((exp) => (
                 <SelectItem key={exp} value={exp}>
                   {exp}
                 </SelectItem>

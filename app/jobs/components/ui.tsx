@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { DetailedJobCardProps, ScoreBoxProps, JobListingCardProps, JobCardProps, StatusSectionProps, StatusTableProps, BadgeColor, Job, StatusType } from '../types/job.types';
+import { DetailedJobCardProps, ScoreBoxProps, JobCardProps, StatusSectionProps, StatusTableProps, BadgeColor, Job, StatusType } from '../types/job.types';
+import { STATUS_COLORS, STATUS_SECTION_COLORS, STATUS_TABLE_COLORS, STATUS_CONFIG, JOB_CARD_BUTTON_CONFIGS, PRIMARY_BUTTON_COLOR_CLASSES } from '../constants/ui';
+import { MODAL_DEFAULTS } from '../constants/messages';
 
 // ============ DETAIL CARD ============
 export const DetailedJobCard: React.FC<DetailedJobCardProps> = ({ job, status, onClose }) => {
-  const statusColors: Record<string, string> = { applied: 'text-blue-600', shortlisted: 'text-orange-600', interviewing: 'text-red-600', hired: 'text-green-600' };
-  const statusColor = statusColors[status] || 'text-gray-600';
+  const statusColor = STATUS_COLORS[status] || 'text-gray-600';
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 mb-2">
@@ -51,46 +52,6 @@ export const ScoreBox: React.FC<ScoreBoxProps> = ({ score }) => (
 );
 
 
-export const JobListingCard: React.FC<JobListingCardProps> = ({ job }) => (
-  <div className="bg-white border-2 border-orange-200 rounded-lg p-4 hover:shadow-md transition relative cursor-pointer hover:border-orange-400">
-    {/* Radio Button with Bottom-Left Border Only */}
-    <div className="absolute top-0 right-0 border-b-2 border-l-2 border-gray-300 rounded-bl p-1">
-      <label htmlFor={`job-${job.id}`} className="cursor-pointer block">
-        <input 
-          type="radio" 
-          className="peer hidden" 
-          id={`job-${job.id}`}
-          name="job-selection"
-        />
-        {/* Orange Circle Inside */}
-        <div className="w-4 h-4 rounded-full border-2 border-orange-500 flex items-center justify-center peer-checked:bg-orange-500">
-          {/* Inner white dot when checked */}
-          <div className="w-1.5 h-1.5 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
-        </div>
-      </label>
-    </div>
-    
-    <h3 className="font-semibold text-gray-800 text-xl mb-3">{job.title}</h3>
-    <div className="flex items-center gap-1 text-xs text-gray-600 mb-3">
-      <Image src="/svg/Briefcase.svg" alt="briefcase" width={16} height={16} />
-      <span>{job.experience} | {job.position}</span>
-    </div>
-    <p className="text-xs text-orange-600 mb-2 line-clamp-1">Spec : {job.specializations.join(' · ')}</p>
-    <p className="text-xs text-orange-600 font-medium mb-3 line-clamp-1">Qualif : {job.specializations.join(' · ')}</p>
-    <div className="flex items-center justify-between text-xs text-gray-600">
-      <div className="flex items-center gap-1">
-        <Image src="/svg/Time.svg" alt="time" width={16} height={16} />
-        <span>{job.postedDaysAgo} min ago</span>
-      </div>
-      <div className="flex items-center gap-1">
-        <Image src="/svg/People.svg" alt="people" width={16} height={16} />
-        <span>{job.applicantCount} applied</span>
-      </div>
-    </div>
-  </div>
-);
-
-
 // ============ JOB ACTION MODAL ============
 interface JobActionModalProps {
   isOpen: boolean;
@@ -106,9 +67,9 @@ interface JobActionModalProps {
   primaryButtonColor?: 'orange' | 'red' | 'green';
 }
 
-export const JobActionModal: React.FC<JobActionModalProps> = ({ isOpen, onClose, title, message, svgIcon, primaryButtonText = 'Done', secondaryButtonText = 'No', onPrimaryClick, onSecondaryClick, primaryButtonColor = 'orange' }) => {
+export const JobActionModal: React.FC<JobActionModalProps> = ({ isOpen, onClose, title, message, svgIcon, primaryButtonText = MODAL_DEFAULTS.PRIMARY_BUTTON_TEXT, secondaryButtonText = MODAL_DEFAULTS.SECONDARY_BUTTON_TEXT, onPrimaryClick, onSecondaryClick, primaryButtonColor = MODAL_DEFAULTS.PRIMARY_BUTTON_COLOR }) => {
   if (!isOpen) return null;
-  const primaryColorClasses = primaryButtonColor === 'orange' ? 'bg-orange-500 hover:bg-orange-600' : primaryButtonColor === 'green' ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600';
+  const primaryColorClasses = PRIMARY_BUTTON_COLOR_CLASSES[primaryButtonColor];
   
   return (
     <>
@@ -129,19 +90,12 @@ export const JobActionModal: React.FC<JobActionModalProps> = ({ isOpen, onClose,
 };
 
 // ============ STATUS SECTION ============
-const statusSectionColors: Record<BadgeColor, { border: string; bg: string; dot: string; text: string }> = {
-  blue: { border: 'border-blue-200', bg: 'bg-blue-50', dot: 'bg-blue-500', text: 'text-blue-600' },
-  orange: { border: 'border-orange-200', bg: 'bg-orange-50', dot: 'bg-orange-500', text: 'text-orange-600' },
-  red: { border: 'border-red-200', bg: 'bg-red-50', dot: 'bg-red-500', text: 'text-red-600' },
-  green: { border: 'border-green-200', bg: 'bg-green-50', dot: 'bg-green-500', text: 'text-green-600' },
-};
-
 interface StatusSectionPropsExtended extends StatusSectionProps {
   onCandidateClick?: (job: Job, status: StatusType) => void;
 }
 
 export const StatusSection: React.FC<StatusSectionPropsExtended> = ({ status, title, count, jobs, badgeColor, onJobView, onCandidateClick }) => {
-  const c = statusSectionColors[badgeColor];
+  const c = STATUS_SECTION_COLORS[badgeColor];
   return (
     <section>
       <div className={`rounded-lg p-4 border-2 ${c.border} ${c.bg}`}>
@@ -165,14 +119,8 @@ export const StatusSection: React.FC<StatusSectionPropsExtended> = ({ status, ti
 // ============ JOB CARD (Internal) ============
 const JobCardComponent: React.FC<JobCardProps> = ({ job, status, badgeColor, index, onView }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const statusConfig = { applied: { textColor: 'text-blue-600', statusLabel: 'Applied' }, shortlisted: { textColor: 'text-orange-600', statusLabel: 'Shortlisted' }, interviewing: { textColor: 'text-red-600', statusLabel: 'Interviewing' }, hired: { textColor: 'text-green-600', statusLabel: 'Hired' } };
-  const config = statusConfig[status];
-  const buttonConfigs = {
-    applied: [{ label: 'Schedule', style: 'text-gray-700 bg-gray-100 rounded border border-gray-300 hover:bg-gray-200' }, { label: 'Hire', style: 'bg-orange-500 text-white rounded hover:bg-orange-600' }],
-    shortlisted: [{ label: 'Shortlisted', style: 'bg-[#FEF1E8] text-[#F4781B] rounded' }, { label: 'Schedule', style: 'bg-white text-black rounded hover:bg-orange-600 border' }, { label: 'Hire', style: 'bg-orange-500 text-white rounded hover:bg-orange-600' }],
-    interviewing: [{ label: 'Interviewing', style: 'text-red-600 rounded border border-red-300 bg-red-50 hover:bg-red-100' }, { label: 'Hire', style: 'bg-orange-500 text-white rounded hover:bg-orange-600' }],
-    hired: [{ label: 'Hired', style: 'bg-green-100 text-green-700 rounded border border-green-200' }]
-  };
+  const config = STATUS_CONFIG[status];
+  const buttonConfigs = JOB_CARD_BUTTON_CONFIGS;
 
   return (
     <div>
@@ -195,15 +143,8 @@ const JobCardComponent: React.FC<JobCardProps> = ({ job, status, badgeColor, ind
 };
 
 // ============ STATUS TABLE ============
-const statusTableColors: Record<BadgeColor, { border: string; bg: string; dot: string; text: string; rowTint: string }> = {
-  blue: { border: 'border-blue-200', bg: 'bg-blue-50', dot: 'bg-blue-500', text: 'text-blue-600', rowTint: 'bg-blue-50/40' },
-  orange: { border: 'border-orange-200', bg: 'bg-orange-50', dot: 'bg-orange-500', text: 'text-orange-600', rowTint: 'bg-orange-50/40' },
-  red: { border: 'border-red-200', bg: 'bg-red-50', dot: 'bg-red-500', text: 'text-red-600', rowTint: 'bg-red-50/40' },
-  green: { border: 'border-green-200', bg: 'bg-green-50', dot: 'bg-green-500', text: 'text-green-600', rowTint: 'bg-green-50/40' },
-};
-
 export const StatusTable: React.FC<StatusTableProps> = ({ title, count, jobs, badgeColor }) => {
-  const c = statusTableColors[badgeColor];
+  const c = STATUS_TABLE_COLORS[badgeColor];
   return (
     <div className={`rounded-lg border ${c.border} overflow-hidden mb-6`}>
       <div className={`flex items-center gap-2 px-4 py-2 ${c.bg} border-b ${c.border}`}><div className={`w-2.5 h-2.5 rounded-full ${c.dot}`} /><span className="font-semibold">{title}</span><span className={`${c.text} text-sm`}>{count}</span></div>
@@ -236,3 +177,4 @@ export const StatusTable: React.FC<StatusTableProps> = ({ title, count, jobs, ba
     </div>
   );
 };
+

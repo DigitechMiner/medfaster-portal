@@ -10,7 +10,7 @@ import { landingNavLinks } from "@/constants/landingPage";
 
 export function LandingHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState("About Us");
+  const [active, setActive] = useState("Home");
 
   return (
     <header className="relative w-full bg-white flex items-center justify-between rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl p-2 md:px-4 lg:px-6 xl:px-8">

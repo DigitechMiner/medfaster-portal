@@ -69,3 +69,4 @@ export interface StatusTableProps {
   jobs: Job[];
   badgeColor: BadgeColor;
 }
+

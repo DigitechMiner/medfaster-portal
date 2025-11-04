@@ -6,18 +6,9 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuestionsTopic } from "../components/questions-topic";
 import { TopActionBar } from "@/components/custom/top-action-bar";
-import SuccessModal from "../components/job-success-modal";
-
-interface Question {
-  id: string;
-  text: string;
-}
-
-interface Topic {
-  id: string;
-  title: string;
-  questions: Question[];
-}
+import SuccessModal from "@/components/modal";
+import { DEFAULT_TOPICS, Topic } from "../../constants/form";
+import { PAGE_TITLES, BUTTON_LABELS, SUCCESS_MESSAGES, STORAGE_KEYS } from "../../constants/messages";
 
 interface Props {
   onBack?: () => void;
@@ -26,45 +17,7 @@ interface Props {
 
 export function GenerateAIForm({ onBack, onCreate }: Props) {
   const router = useRouter();
-  const [topics, setTopics] = useState<Topic[]>([
-    {
-      id: "1",
-      title: "Questions Topic 1",
-      questions: [
-        { id: "1-1", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "1-2", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "1-3", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "1-4", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-      ],
-    },
-    {
-      id: "2",
-      title: "Questions Topic 2",
-      questions: [
-        { id: "2-1", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "2-2", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "2-3", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-      ],
-    },
-    {
-      id: "3",
-      title: "Questions Topic 3",
-      questions: [
-        { id: "3-1", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "3-2", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "3-3", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "3-4", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-      ],
-    },
-    {
-      id: "4",
-      title: "Questions Topic 4",
-      questions: [
-        { id: "4-1", text: "Lorem ipsum dolor sit amet consectetuer Non commodo tellus non enim sit?" },
-        { id: "4-2", text: "Lorem ipsum dolor sit amet consectetuer Non commodo" },
-      ],
-    },
-  ]);
+  const [topics, setTopics] = useState<Topic[]>(DEFAULT_TOPICS);
 
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -132,6 +85,8 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
 
   const handleSuccessDone = () => {
     setShowSuccess(false);
+    // Set flag to show dashboard instead of empty state
+    localStorage.setItem(STORAGE_KEYS.HAS_JOBS, "true");
     router.push("/jobs");
   };
 
@@ -139,16 +94,16 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
     <>
     <div className="space-y-3 sm:space-y-4">
       <TopActionBar
-        title="Create Job post"
+        title={PAGE_TITLES.CREATE_JOB}
         onPreview={() => onBack && onBack()}
         onPrimary={handleSave}
-        primaryLabel="Save & continue"
+        primaryLabel={BUTTON_LABELS.SAVE_AND_CONTINUE}
       />
 
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="p-4 sm:p-6 lg:p-8">
           <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-6 sm:mb-8">
-            generate with AI
+            {PAGE_TITLES.GENERATE_WITH_AI}
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -176,7 +131,7 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
             className="w-full sm:w-auto bg-white border-[#D9D9E0] border-2 hover:bg-gray-50 text-gray-600 px-4 sm:px-6 h-10 text-sm order-2 sm:order-1"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
+            {BUTTON_LABELS.BACK}
           </Button>
           <Button
             type="button"
@@ -184,7 +139,7 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
             onClick={handleCreate}
             className="w-full sm:w-auto bg-[#F4781B] hover:bg-orange-600 text-white px-4 sm:px-6 h-10 shadow-sm text-sm order-1 sm:order-2"
           >
-            Create
+            {BUTTON_LABELS.CREATE}
           </Button>
         </div>
       </div>
@@ -192,9 +147,9 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
     <SuccessModal
       visible={showSuccess}
       onClose={handleSuccessDone}
-      title="Job created successfully"
-      message="Your job post has been created."
-      buttonText="Done"
+      title={SUCCESS_MESSAGES.JOB_CREATED.title}
+      message={SUCCESS_MESSAGES.JOB_CREATED.message}
+      buttonText={SUCCESS_MESSAGES.JOB_CREATED.buttonText}
     />
     </>
   );
