@@ -69,13 +69,13 @@ export default function EditJobPage() {
         <div className="flex gap-3 w-full sm:w-auto">
           <button
             onClick={handleCancel}
-            className="flex-1 sm:flex-none px-4 py-2 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 bg-white font-medium text-sm rounded"
+            className="flex-1 sm:flex-none px-8 py-2 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 bg-white font-medium text-sm rounded-sm"
           >
             Preview
           </button>
           <button
             onClick={handleSubmit}
-            className="flex-1 sm:flex-none px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded"
+            className="flex-1 sm:flex-none px-2 py-2 bg-[#F4781B] hover:bg-orange-600 text-white font-medium text-sm rounded-sm"
           >
             Save & continue
           </button>

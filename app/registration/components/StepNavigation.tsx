@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface StepNavigationProps {
@@ -17,7 +17,7 @@ export default function StepNavigation({
   onNext,
 }: StepNavigationProps) {
   return (
-    <div className="flex justify-end gap-2 mb-4 sm:mb-6">
+    <div className="flex justify-end gap-5 mb-4 sm:mb-6">
       <Button
         type="button"
         variant="ghost"
@@ -25,7 +25,7 @@ export default function StepNavigation({
         onClick={onPrev}
         disabled={currentStep === 0}
       >
-        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
       </Button>
       <Button
         type="button"
@@ -34,7 +34,7 @@ export default function StepNavigation({
         onClick={onNext}
         disabled={currentStep === totalSteps - 1}
       >
-        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
       </Button>
     </div>
   );
