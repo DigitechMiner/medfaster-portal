@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { Heading } from "@/components/custom/heading";
 import { Section } from "@/components/custom/section";
 import { CustomButton } from "@/components/custom/custom-button";
@@ -32,7 +31,7 @@ export function LandingFooter() {
 
       setMessage(`✓ Successfully subscribed with ${email}!`);
       setEmail("");
-    } catch (error) {
+    } catch {
       setMessage("✗ Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);

@@ -7,8 +7,6 @@ import { Heading } from "@/components/custom/heading";
 import { ResponsiveParagraph } from "@/components/custom/paragraph";
 import { CheckCircle2, Info } from "lucide-react";
 
-type ModalVariant = "success" | "confirmation";
-
 interface BaseModalProps {
   visible: boolean;
   onClose: () => void;
@@ -70,7 +68,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   // Button handlers
   const handlePrimaryClick = () => {
     if (isConfirmation) {
-      (props as ConfirmationModalProps).onConfirm?.() || onClose();
+      (props as ConfirmationModalProps).onConfirm?.() ?? onClose();
     } else {
       onClose();
     }
@@ -78,7 +76,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 
   const handleSecondaryClick = () => {
     if (isConfirmation) {
-      (props as ConfirmationModalProps).onCancel?.() || onClose();
+      (props as ConfirmationModalProps).onCancel?.() ?? onClose();
     }
   };
 

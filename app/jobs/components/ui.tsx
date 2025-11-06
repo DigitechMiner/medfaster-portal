@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { DetailedJobCardProps, JobCardProps, StatusSectionProps, StatusTableProps, BadgeColor, Job, StatusType } from '@/Interface/job.types';
-import { STATUS_COLORS, STATUS_SECTION_COLORS, STATUS_TABLE_COLORS, STATUS_CONFIG, JOB_CARD_BUTTON_CONFIGS, PRIMARY_BUTTON_COLOR_CLASSES } from '../constants/ui';
+import { DetailedJobCardProps, JobCardProps, StatusSectionProps, StatusTableProps, Job, StatusType } from '@/Interface/job.types';
+import { STATUS_COLORS, STATUS_SECTION_COLORS, STATUS_TABLE_COLORS, JOB_CARD_BUTTON_CONFIGS, PRIMARY_BUTTON_COLOR_CLASSES } from '../constants/ui';
 import { MODAL_DEFAULTS } from '../constants/messages';
 import ScoreCard from '@/components/card/scorecard';
 
@@ -106,9 +106,8 @@ export const StatusSection: React.FC<StatusSectionPropsExtended> = ({ status, ti
 };
 
 // ============ JOB CARD (Internal) ============
-const JobCardComponent: React.FC<JobCardProps> = ({ job, status, badgeColor, index, onView }) => {
+const JobCardComponent: React.FC<JobCardProps> = ({ job, status, badgeColor: _badgeColor, index: _index, onView: _onView }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const config = STATUS_CONFIG[status];
   const buttonConfigs = JOB_CARD_BUTTON_CONFIGS;
 
   return (

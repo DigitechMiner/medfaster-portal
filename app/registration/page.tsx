@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Mail, ChevronLeft } from "lucide-react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,18 +15,25 @@ import {
   ComplianceVerificationStep,
 } from "./form";
 
+type FormValues = typeof allDefaultValues[number];
+
 export default function SmartFormPage() {
   const [step, setStep] = useState(0);
+  const router = useRouter();
 
-  const methods = useForm({
-    resolver: zodResolver(schemas[step]) as any,
-    defaultValues: allDefaultValues[step] as any,
+  const methods = useForm<FormValues>({
+    resolver: zodResolver(schemas[step]),
+    defaultValues: allDefaultValues[step],
     mode: "onChange",
   });
 
+  const resetForm = useCallback(() => {
+    methods.reset(allDefaultValues[step]);
+  }, [step, methods]);
+
   useEffect(() => {
-    methods.reset(allDefaultValues[step] as any);
-  }, [step]); // Removed methods from dependency to avoid infinite loops
+    resetForm();
+  }, [resetForm]);
 
   const goToNextStep = async () => {
     const isValid = await methods.trigger();
@@ -46,7 +54,8 @@ export default function SmartFormPage() {
     if (isValid) {
       const data = methods.getValues();
       console.log("Form Data:", data);
-      alert(JSON.stringify(data, null, 2));
+      // Redirect to jobs page after successful submission
+      router.push("/jobs");
     }
   };
 

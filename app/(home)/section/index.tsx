@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CustomButton } from "@/components/custom/custom-button";
-import { ArrowRight, Wand2, ShieldCheck, Briefcase, DownloadIcon, ChevronRight, CalendarRange } from "lucide-react";
+import { ArrowRight, Wand2, ShieldCheck, Briefcase, ChevronRight, CalendarRange } from "lucide-react";
 import { Section } from "@/components/custom/section";
 import { Heading } from "@/components/custom/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";

@@ -3,12 +3,14 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { CustomButton } from "@/components/custom/custom-button";
 import Image from "next/image";
 import { landingNavLinks } from "@/constants/landingPage";
 
 export function LandingHeader() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("Home");
 
@@ -57,6 +59,7 @@ export function LandingHeader() {
         style={{
           background: "linear-gradient(225deg, #EB001B 0%, #F79E1B 100%)",
         }}
+        onClick={() => router.push("/registration")}
       >
         Login
       </CustomButton>
@@ -88,6 +91,10 @@ export function LandingHeader() {
               className="w-full justify-center my-1 py-2"
               style={{
                 background: "linear-gradient(225deg, #EB001B 0%, #F79E1B 100%)",
+              }}
+              onClick={() => {
+                router.push("/registration");
+                setMobileOpen(false);
               }}
             >
               Login

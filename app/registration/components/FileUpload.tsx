@@ -55,7 +55,7 @@ export default function FileUpload({
       control={methods.control}
       name={name}
       render={({ field }) => {
-        const { onChange, value } = field;
+        const { onChange } = field;
         return (
         <FormItem>
           <FormLabel className="text-sm font-medium text-gray-700">

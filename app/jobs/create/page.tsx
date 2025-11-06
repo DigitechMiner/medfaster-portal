@@ -1,11 +1,11 @@
 'use client'
-import { useMemo } from "react";
+import { useMemo, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AppLayout } from "@/components/global/app-layout";
 import { CreateJobForm } from "./form/create-job-form";
 import { GenerateAIForm } from "./form/generative-ai-form";
 
-export default function CreateJobPage() {
+function CreateJobContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -30,5 +30,21 @@ export default function CreateJobPage() {
         )}
       </div>
     </AppLayout>
+  );
+}
+
+export default function CreateJobPage() {
+  return (
+    <Suspense fallback={
+      <AppLayout>
+        <div className="py-2 md:py-4 lg:py-6">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <p className="text-gray-600">Loading...</p>
+          </div>
+        </div>
+      </AppLayout>
+    }>
+      <CreateJobContent />
+    </Suspense>
   );
 }

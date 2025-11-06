@@ -11,10 +11,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { JOB_TITLES, DEPARTMENTS } from "../../constants/form";
+import { JobFormData } from "../../components/JobForm";
 
 interface JobBasicInfoProps {
-  formData: any;
-  updateFormData: (updates: any) => void;
+  formData: JobFormData;
+  updateFormData: (updates: Partial<JobFormData>) => void;
 }
 
 export function JobBasicInfo({ formData, updateFormData }: JobBasicInfoProps) {

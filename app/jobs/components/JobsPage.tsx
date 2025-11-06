@@ -23,7 +23,7 @@ const JobsPage: React.FC = () => {
   const { jobs, isLoading: isLoadingJobs } = useJobs();
   const { candidatesData, isLoading: isLoadingCandidates } = useAllCandidates();
 
-  const handleCandidateClick = (job: Job, status: StatusType) => {
+  const handleCandidateClick = (job: Job, _status: StatusType) => {
     router.push(`jobs/candidates/${job.id}`);
   };
 

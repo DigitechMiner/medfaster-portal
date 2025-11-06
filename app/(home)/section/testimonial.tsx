@@ -46,9 +46,11 @@ export default function TestimonialsSlider() {
         <div className="flex flex-col md:flex-row items-start gap-6">
           {/* Left Side - Quote Icon */}
           <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 lg:w-16 lg:h-16">
-            <img
+            <Image
               src='/icon/quote.svg'
               alt="Quote"
+              width={64}
+              height={64}
               className="w-full h-full object-contain"
             />
           </div>

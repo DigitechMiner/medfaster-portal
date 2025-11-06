@@ -117,7 +117,6 @@ const CircularProgress = ({
 };
 
 export default function ScoreCard({ 
-  category, 
   score, 
   maxScore, 
   className = '', 

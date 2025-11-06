@@ -2,14 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Navbar } from "@/components/global/navbar";
 import { MetricRow } from "./CandidateDetailComponents";
 import { CandidateHero } from "./candidate-hero";
 import { CalendarCard } from "@/components/card/calendar-card";
 import SuccessModal from "@/components/modal";
 import { Job, StatusType } from "@/Interface/job.types";
 import { ArrowLeft, ChevronRight } from "lucide-react";
-import { Footer } from "@/components/global/footer";
 import { CANDIDATE_DETAIL_BUTTON_CONFIGS } from "../../../constants/ui";
 import ScoreCard from "@/components/card/scorecard";
 import { Button } from "@/components/ui/button";

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { JobListingCard } from "../../../components/card/JobCard";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,6 @@ import { useJobs } from "../hooks/useJobData";
 
 const AllJobsPage: React.FC = () => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const { jobs, isLoading, error } = useJobs();
 
   if (isLoading) {

@@ -3,12 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const navLinks = [
     { href: "/dashboard", label: "Dashboard" },
     { href: "/jobs", label: "Jobs" },
@@ -29,7 +30,7 @@ export function Navbar() {
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
 
-            <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center">
+            <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center cursor-pointer" onClick={() => router.push("/")}>
               <Image
                 src="/img/brand/medfaster-logo.png"
                 height={50}

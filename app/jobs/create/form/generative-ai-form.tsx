@@ -70,10 +70,6 @@ export function GenerateAIForm({ onBack, onCreate }: Props) {
     );
   };
 
-  const handlePreview = () => {
-    console.log("Preview clicked");
-  };
-
   const handleSave = () => {
     console.log("Save & continue clicked", topics);
     setShowSuccess(true);
