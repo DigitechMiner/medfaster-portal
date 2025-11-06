@@ -1,10 +1,10 @@
 export type NavLink = { label: string; href: string };
 export const landingNavLinks: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/registration' },
-  { label: 'Find Jobs', href: '/jobs' },
-  { label: 'Blog', href: '/registration' },
-  { label: 'Contact Us', href: '/registration' },
+  { label: 'Why Medfaster?', href: '/' },
+  { label: 'Post a Job', href: '/jobs' },
+  { label: 'Our Subscriptions', href: '/' },
+  { label: 'Hiring Blog', href: '/' },
 ];
 
 export type CompanyLogo = { src: string; alt: string };

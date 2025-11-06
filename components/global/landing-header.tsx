@@ -36,7 +36,7 @@ export function LandingHeader() {
         </div>
       </div>
 
-      <nav className="hidden lg:flex bg-gray-100 rounded-full p-2 items-center gap-1">
+      <nav className="hidden lg:flex bg-gray-100 rounded-full p-1 items-center gap-1">
         {landingNavLinks.map((link) => (
           <Button
             key={link.label}
@@ -61,7 +61,7 @@ export function LandingHeader() {
         }}
         onClick={() => router.push("/registration")}
       >
-        Login
+        Login as Recruiter
       </CustomButton>
 
       {mobileOpen && (
@@ -97,7 +97,7 @@ export function LandingHeader() {
                 setMobileOpen(false);
               }}
             >
-              Login
+              Login as Recruiter
             </CustomButton>
           </div>
         </div>
