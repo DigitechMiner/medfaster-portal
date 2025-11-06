@@ -156,7 +156,7 @@ export const CandidateHero: React.FC<CandidateHeroProps> = ({
             </svg>
             <span className="text-xs text-gray-600">Current Company</span>
           </div>
-          <p className="text-lg font-bold text-gray-900">Medfasterrrrr</p>
+          <p className="text-lg font-bold text-gray-900">Medfaster</p>
         </div>
 
         <div className="flex-1">

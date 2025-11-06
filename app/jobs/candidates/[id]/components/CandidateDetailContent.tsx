@@ -154,7 +154,7 @@ export const CandidateDetailContent: React.FC<CandidateDetailContentProps> = ({
                     />
                     <div>
                       <h3 className="font-semibold text-gray-900">
-                        Medfasterrrrr
+                        Medfaster
                       </h3>
                     </div>
                   </div>
