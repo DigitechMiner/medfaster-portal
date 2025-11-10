@@ -133,29 +133,96 @@ const JobCardComponent: React.FC<JobCardProps> = ({ job, status, badgeColor: _ba
 // ============ STATUS TABLE ============
 export const StatusTable: React.FC<StatusTableProps> = ({ title, count, jobs, badgeColor }) => {
   const c = STATUS_TABLE_COLORS[badgeColor];
+  
   return (
     <div className={`rounded-lg border ${c.border} overflow-hidden mb-6`}>
-      <div className={`flex items-center gap-2 px-4 py-2 ${c.bg} border-b ${c.border}`}><div className={`w-2.5 h-2.5 rounded-full ${c.dot}`} /><span className="font-semibold">{title}</span><span className={`${c.text} text-sm`}>{count}</span></div>
-      <div className="px-3 py-3">
+      {/* Header */}
+      <div className={`flex items-center gap-2 px-3 sm:px-4 py-2 ${c.bg} border-b ${c.border}`}>
+        <div className={`w-2.5 h-2.5 rounded-full ${c.dot}`} />
+        <span className="font-semibold text-sm sm:text-base">{title}</span>
+        <span className={`${c.text} text-xs sm:text-sm`}>{count}</span>
+      </div>
+
+      <div className="px-2 sm:px-3 py-3">
         <div className="rounded-lg overflow-hidden border border-gray-200">
-          <div className="grid grid-cols-12 text-[12px] text-gray-500 bg-gray-50 px-3 py-2"><div className="col-span-4">Candidate Name</div><div className="col-span-2">Work Experience</div><div className="col-span-2">Current Company</div><div className="col-span-2">Job Type</div><div className="col-span-1 text-right">Overall Score</div><div className="col-span-1 text-right">Action</div></div>
+          {/* Desktop Table Header - Hidden on mobile */}
+          <div className="hidden lg:grid grid-cols-12 text-[12px] text-gray-500 bg-gray-50 px-3 py-2">
+            <div className="col-span-4">Candidate Name</div>
+            <div className="col-span-2">Work Experience</div>
+            <div className="col-span-2">Current Company</div>
+            <div className="col-span-2">Job Type</div>
+            <div className="col-span-1 text-right">Overall Score</div>
+            <div className="col-span-1 text-right">Action</div>
+          </div>
+
+          {/* Table Body */}
           <div className="divide-y divide-gray-100">
             {jobs.map((j) => (
-              <div key={j.id} className="grid grid-cols-12 items-center px-3 py-3 text-sm bg-white">
-                <div className="col-span-4 flex items-center gap-3">
-                  <button className="p-1 hover:bg-gray-100 rounded">
-                    <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
-                    </svg>
-                  </button>
-                  <div className="w-8 h-8 rounded-full bg-gray-200" />
-                  <div className="flex flex-col"><span className="font-medium text-gray-800">{j.doctorName}</span><span className="text-[11px] text-gray-500">Spec: {j.specialization.join(' | ')}</span></div>
+              <div key={j.id}>
+                {/* Desktop View */}
+                <div className="hidden lg:grid grid-cols-12 items-center px-3 py-3 text-sm bg-white">
+                  <div className="col-span-4 flex items-center gap-3">
+                    <button className="p-1 hover:bg-gray-100 rounded">
+                      <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+                      </svg>
+                    </button>
+                    <div className="w-8 h-8 rounded-full bg-gray-200" />
+                    <div className="flex flex-col">
+                      <span className="font-medium text-gray-800">{j.doctorName}</span>
+                      <span className="text-[11px] text-gray-500">Spec: {j.specialization.join(' | ')}</span>
+                    </div>
+                  </div>
+                  <div className="col-span-2 text-gray-700">{j.experience}+ yrs</div>
+                  <div className="col-span-2 text-gray-700">{j.currentCompany ?? '—'}</div>
+                  <div className="col-span-2 text-gray-700">{j.position}</div>
+                  <div className="col-span-1 text-right text-gray-800">{j.score}/100</div>
+                  <div className="col-span-1 flex justify-end">
+                    <button className="text-orange-600 hover:text-orange-700 underline text-sm">Hire</button>
+                  </div>
                 </div>
-                <div className="col-span-2 text-gray-700">{j.experience}+ yrs</div>
-                <div className="col-span-2 text-gray-700">{j.currentCompany ?? '—'}</div>
-                <div className="col-span-2 text-gray-700">{j.position}</div>
-                <div className="col-span-1 text-right text-gray-800">{j.score}/100</div>
-                <div className="col-span-1"><div className="flex justify-end"><button className="text-orange-600 hover:text-orange-700 underline text-sm">Hire</button></div></div>
+
+                {/* Mobile/Tablet View */}
+                <div className="lg:hidden bg-white p-4 space-y-3">
+                  {/* Header with name and action */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      <button className="p-1 hover:bg-gray-100 rounded flex-shrink-0">
+                        <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+                        </svg>
+                      </button>
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 flex-shrink-0" />
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-medium text-gray-800 text-sm sm:text-base truncate">{j.doctorName}</span>
+                        <span className="text-[11px] sm:text-xs text-gray-500 line-clamp-1">Spec: {j.specialization.join(' | ')}</span>
+                      </div>
+                    </div>
+                    <button className="text-orange-600 hover:text-orange-700 underline text-sm flex-shrink-0">
+                      Hire
+                    </button>
+                  </div>
+
+                  {/* Details Grid */}
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <div className="text-gray-500 text-xs mb-1">Experience</div>
+                      <div className="text-gray-800 font-medium">{j.experience}+ yrs</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-500 text-xs mb-1">Score</div>
+                      <div className="text-gray-800 font-medium">{j.score}/100</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-500 text-xs mb-1">Current Company</div>
+                      <div className="text-gray-800 truncate">{j.currentCompany ?? '—'}</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-500 text-xs mb-1">Job Type</div>
+                      <div className="text-gray-800">{j.position}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
             <div className={`h-2 ${c.rowTint}`}></div>
