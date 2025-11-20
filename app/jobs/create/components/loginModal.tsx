@@ -117,7 +117,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     : 'bg-white text-[#717680]'
                 }`}
               >
-                Patient
+                Sign Up
               </button>
               <button
                 onClick={() => setActiveTab('candidate')}
@@ -127,7 +127,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     : 'bg-white text-[#717680]'
                 }`}
               >
-                Candidate
+                Login
               </button>
             </div>
 
@@ -176,7 +176,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
             {/* Sign Up Link */}
             <p className="mt-6 text-center text-sm text-[#717680]">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <button 
                 type="button" 
                 className="text-[#F4781B] font-semibold hover:opacity-80"
@@ -231,7 +231,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
             {/* Resend OTP */}
             <p className="mt-4 text-center text-sm text-[#717680]">
-              Didn't receive the email?{' '}
+              Didn&apos;t receive the email?{' '}
               <button 
                 type="button"
                 onClick={handleResendOTP}
@@ -378,7 +378,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
                 {/* Sign Up Link */}
                 <p className="mt-6 text-center text-sm text-[#717680]">
-                  Don't have an account?{' '}
+                  Don&apos;t have an account?{' '}
                   <button 
                     type="button" 
                     className="text-[#F4781B] font-semibold hover:opacity-80"
@@ -433,7 +433,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
                 {/* Resend OTP */}
                 <p className="mt-4 text-center text-sm text-[#717680]">
-                  Didn't receive the email?{' '}
+                  Didn&apos;t receive the email?{' '}
                   <button 
                     type="button"
                     onClick={handleResendOTP}

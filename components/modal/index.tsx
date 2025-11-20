@@ -68,15 +68,23 @@ const Modal: React.FC<ModalProps> = (props) => {
   // Button handlers
   const handlePrimaryClick = () => {
     if (isConfirmation) {
-      (props as ConfirmationModalProps).onConfirm?.() ?? onClose();
+      const confirmProps = props as ConfirmationModalProps;
+      if (confirmProps.onConfirm) {
+        confirmProps.onConfirm();
+      } else {
+        onClose();
+      }
     } else {
       onClose();
     }
   };
 
   const handleSecondaryClick = () => {
-    if (isConfirmation) {
-      (props as ConfirmationModalProps).onCancel?.() ?? onClose();
+    const confirmProps = props as ConfirmationModalProps;
+    if (confirmProps.onCancel) {
+      confirmProps.onCancel();
+    } else {
+      onClose();
     }
   };
 

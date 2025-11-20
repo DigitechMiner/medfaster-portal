@@ -3,7 +3,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 import { useLoginModal } from "@/contexts/login-modal-context"; // Import login modal context
@@ -13,7 +12,6 @@ import { landingNavLinks } from "@/constants/landingPage";
 import LoginModal from "@/app/jobs/create/components/loginModal";
 
 export function LandingHeader() {
-  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("Home");
   const { isOpen, openLogin, closeLogin } = useLoginModal(); // Get modal state and open function

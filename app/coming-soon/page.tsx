@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Footer } from "@/components/global/footer";
 
 import { ChevronRight } from "lucide-react";
-import { Navbar } from "@/components/global/navbar";
 import { Heading } from "@/components/custom/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";
 import { CustomButton } from "@/components/custom/custom-button";
