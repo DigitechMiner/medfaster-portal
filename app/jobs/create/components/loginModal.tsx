@@ -11,7 +11,7 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  const [activeTab, setActiveTab] = useState<'patient' | 'candidate'>('patient');
+  const [activeTab, setActiveTab] = useState<'Sign Up' | 'Login'>('Sign Up');
   const [mobileNumber, setMobileNumber] = useState('');
   const [showOTP, setShowOTP] = useState(false);
   const [otp, setOtp] = useState(['', '', '', '']);
@@ -110,9 +110,9 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             {/* Tab Switcher */}
             <div className="flex gap-2 mb-6">
               <button
-                onClick={() => setActiveTab('patient')}
+                onClick={() => setActiveTab('Sign Up')}
                 className={`flex-1 py-2 text-sm font-medium transition-all rounded-lg ${
-                  activeTab === 'patient'
+                  activeTab === 'Sign Up'
                     ? 'bg-gray-100 text-[#252B37]'
                     : 'bg-white text-[#717680]'
                 }`}
@@ -120,9 +120,9 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 Sign Up
               </button>
               <button
-                onClick={() => setActiveTab('candidate')}
+                onClick={() => setActiveTab('Login')}
                 className={`flex-1 py-2 text-sm font-medium transition-all rounded-lg ${
-                  activeTab === 'candidate'
+                  activeTab === 'Login'
                     ? 'bg-gray-100 text-[#252B37]'
                     : 'bg-white text-[#717680]'
                 }`}
@@ -272,7 +272,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <div className="relative w-full h-full rounded-2xl overflow-hidden">
             <Image
               src="/img/people/modalDoctor.png"
-              alt="Healthcare professional with patient"
+              alt="Healthcare professional with Sign Up"
               fill
               className="object-cover"
               priority
@@ -307,24 +307,24 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 {/* Tab Switcher */}
                 <div className="flex gap-2 mb-6 border-2 rounded-lg">
                   <button
-                    onClick={() => setActiveTab('patient')}
+                    onClick={() => setActiveTab('Sign Up')}
                     className={`flex-1 py-2 text-sm font-medium transition-all rounded-lg ${
-                      activeTab === 'patient'
+                      activeTab === 'Sign Up'
                         ? 'bg-white text-[#252B37] border-1'
                         : 'bg-white text-[#717680]'
                     }`}
                   >
-                    Patient
+                    Sign Up
                   </button>
                   <button
-                    onClick={() => setActiveTab('candidate')}
+                    onClick={() => setActiveTab('Login')}
                     className={`flex-1 py-2 text-sm font-medium transition-all rounded-lg ${
-                      activeTab === 'candidate'
+                      activeTab === 'Login'
                         ? 'bg-white text-[#252B37] border-1'
                         : 'bg-white text-[#717680]'
                     }`}
                   >
-                    Candidate
+                    Login
                   </button>
                 </div>
 
